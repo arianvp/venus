@@ -1,4 +1,4 @@
-defmodule Venus.World do
+defmodule GameServer.World do
 @moduledoc """
 This module encapsulates all the state of the world.
 

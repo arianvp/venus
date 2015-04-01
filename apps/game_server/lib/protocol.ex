@@ -1,4 +1,4 @@
-defmodule Venus.Protocol do
+defmodule GameServer.Protocol do
   @behaviour :ranch_protocol
   @behaviour :gen_fsm
   require Logger
@@ -15,10 +15,6 @@ defmodule Venus.Protocol do
 
     state = {:state, sock, trans}
     :gen_fsm.enter_loop(__MODULE__,[],:handshake, [])
-  end
-
-  def init(_opts) do
-    :error
   end
 
   def handshake(event, state) do

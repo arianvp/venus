@@ -1,4 +1,4 @@
-Venus
+VENUS
 =========
 
 ** TODO: Add description **

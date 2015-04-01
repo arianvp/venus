@@ -1,4 +1,4 @@
-defmodule Venus.Codec do
+defmodule GameServer.Codec do
 @moduledoc """
 Defines helper functions for working with the game protocol
 """

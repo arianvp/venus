@@ -1,4 +1,4 @@
-defmodule Venus.Listener do
+defmodule GameServer.Listener do
   require Logger
   def start_link() do
     Logger.info("Starting server")
@@ -7,7 +7,7 @@ defmodule Venus.Listener do
       100,
       :ranch_tcp,
       [{:port, 41935}],
-      Venus.Protocol,
+      GameServer.Protocol,
       []
     )
 
