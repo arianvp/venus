@@ -5,7 +5,7 @@ defmodule Jaggrab.Listener do
       100,
       :ranch_tcp,
       # TODO config
-      [{:port, 41395}]
+      [{:port, 43595}],
       []
     )
   end

@@ -5,7 +5,17 @@ defmodule GameServer.Supervisor do
   end
 
   def init(_args) do
-    children = [worker(GameServer.Listener, [])]
+    children = [
+      :ranch.child_spec(
+        GameServer.Listener,
+        100,
+        :ranch_tcp,
+        [{:port, 43594}],
+        GameServer.Protocol,
+        []
+      )
+
+    ]
 
     supervise(children, strategy: :one_for_one)
   end

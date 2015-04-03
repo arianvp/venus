@@ -2,8 +2,11 @@
              [{registered,[]},
               {description,"venus"},
               {applications,[kernel,stdlib,elixir,logger,ranch]},
-              {mod,{'Elixir.Venus',[]}},
+              {mod,{'Elixir.GameServer',[]}},
               {vsn,"0.0.1"},
-              {modules,['Elixir.Venus','Elixir.Venus.Codec',
-                        'Elixir.Venus.Listener','Elixir.Venus.Protocol',
-                        'Elixir.Venus.Supervisor','Elixir.Venus.World']}]}.
+              {modules,['Elixir.GameServer','Elixir.GameServer.Codec',
+                        'Elixir.GameServer.Decoder',
+                        'Elixir.GameServer.Listener',
+                        'Elixir.GameServer.Protocol',
+                        'Elixir.GameServer.Supervisor',
+                        'Elixir.GameServer.World']}]}.
