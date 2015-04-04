@@ -27,6 +27,7 @@ defmodule GameServer.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [ranch: "~> 1.0.0"]
+    [ranch: "~> 1.0.0",
+     isaac: "~> 0.0.1"]
   end
 end
