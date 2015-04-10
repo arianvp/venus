@@ -1,2 +1,4 @@
-deps
-_build
+/_build
+/deps
+erl_crash.dump
+*.ez

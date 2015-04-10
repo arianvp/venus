@@ -1,3 +1,5 @@
+defmodule GameServer.Protocol_new do
+end
 defmodule GameServer.Protocol do
   @behaviour :ranch_protocol
   @behaviour :gen_fsm
@@ -27,14 +29,15 @@ defmodule GameServer.Protocol do
   end
 
 
-  def handshake(ev, ctx) do
-    {:handshake, %{service: service}} = ev
+  def handshake({:handshake, %{service: service}}, ctx) do
     case service do
-      :game   -> {:next_state, :login_handshake, ctx}
+      :game -> {:next_state, :login_handshake, ctx}
     end
   end
 
-  def login_handshake({:login_handshake, data}, ctx) do
+  def login_handshake(ev, ctx) do
+
+    {:login_handshake, data} = ev
     username_hash = data.username_hash
     ctx = ctx
     |> Dict.put(:server_seed, 0)
@@ -49,13 +52,7 @@ defmodule GameServer.Protocol do
     ev
     |> inspect
     |> Logger.debug
-    throw :unimplemented
     {:next_state, :login_payload, ctx}
-  end
-
-  def login_payload(ev,ctx) do
-    throw :unimplemented
-    {:nex_state, :game, ctx}
   end
 
   @doc """
@@ -77,10 +74,9 @@ defmodule GameServer.Protocol do
       :more ->
         {:next_state, state_name, ctx}
       {event, event_args, rest} ->
-        {event,event_args} |> inspect |> Logger.debug
         {:next_state, state_name, ctx} =
-          :gen_fsm.sync_send_event( self(), {event,event_args})
-        handle_data(state_name, %{ctx | rest: rest})
+          apply( __MODULE__ , state_name , [ {event,event_args} , %{ctx | rest: rest} ])
+        handle_data(state_name, ctx)
     end
   end
 
