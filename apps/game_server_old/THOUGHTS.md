@@ -88,3 +88,5 @@ viewport = 32x32
 ===========
 
 Make game_server totally protocol agnostic! THAT'S AWESOME
+
+A lot of messages are protocol agnostic. most events are.  Differences can be handled in game logic.
